@@ -278,6 +278,183 @@ const Roadmap = () => {
             </a>
           </div>
         </div>
+
+        {/* Bằng cấp cần có */}
+        <div className="mt-32">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight">
+              2. MỘT SỐ <span className="text-blue-600">BẰNG CẤP CẦN CÓ</span>
+            </h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              Các chứng chỉ quốc tế giúp bạn khẳng định năng lực và tiến xa hơn trong sự nghiệp.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="bg-white p-8 rounded-3xl shadow-lg border border-slate-100 hover:shadow-xl transition-shadow">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600">
+                  <Award className="w-8 h-8" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900">CompTIA IT Fundamentals (ITF+)</h3>
+                  <p className="text-blue-600 font-medium">Dành cho người mới vào nghề</p>
+                </div>
+              </div>
+              <p className="text-slate-600 leading-relaxed">
+                Giúp nắm kiến thức nền: phần cứng, phần mềm, mạng, bảo mật cơ bản.
+              </p>
+            </div>
+
+            <div className="bg-white p-8 rounded-3xl shadow-lg border border-slate-100 hover:shadow-xl transition-shadow">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-600">
+                  <Award className="w-8 h-8" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900">Google IT Support Certificate</h3>
+                  <p className="text-emerald-600 font-medium">Khóa học online (Coursera)</p>
+                </div>
+              </div>
+              <p className="text-slate-600 leading-relaxed">
+                Kiến thức thực tế: quản lý hệ điều hành, mạng, hệ thống.
+              </p>
+            </div>
+
+            <div className="bg-white p-8 rounded-3xl shadow-lg border border-slate-100 hover:shadow-xl transition-shadow">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center text-purple-600">
+                  <Award className="w-8 h-8" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900">Microsoft Certified: Windows Client</h3>
+                  <p className="text-purple-600 font-medium">Endpoint Administrator</p>
+                </div>
+              </div>
+              <p className="text-slate-600 leading-relaxed">
+                Quản lý máy tính Windows, cấu hình, bảo trì.
+              </p>
+            </div>
+
+            <div className="bg-white p-8 rounded-3xl shadow-lg border border-slate-100 hover:shadow-xl transition-shadow">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-16 h-16 bg-rose-100 rounded-2xl flex items-center justify-center text-rose-600">
+                  <Award className="w-8 h-8" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900">CCNA</h3>
+                  <p className="text-rose-600 font-medium">Cisco Certified Network Associate</p>
+                </div>
+              </div>
+              <p className="text-slate-600 leading-relaxed">
+                Chứng chỉ mạng quan trọng nhất. Giúp bạn hiểu rõ cấu hình router, switch, bảo mật cơ bản.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Kỹ năng cần có */}
+        <div className="mt-32 mb-20">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight">
+              3. MỘT SỐ <span className="text-blue-600">KỸ NĂNG CẦN CÓ</span>
+            </h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              Sự kết hợp hoàn hảo giữa kỹ năng chuyên môn và kỹ năng mềm là chìa khóa thành công.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Kỹ năng chuyên môn */}
+            <div className="bg-slate-900 rounded-[3rem] p-10 md:p-12 text-white shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+              
+              <div className="relative z-10">
+                <div className="flex items-center gap-4 mb-10">
+                  <div className="w-16 h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center text-blue-400">
+                    <Cpu className="w-8 h-8" />
+                  </div>
+                  <h3 className="text-3xl font-bold">Kỹ năng chuyên môn</h3>
+                </div>
+
+                <ul className="space-y-6">
+                  <li className="flex gap-4">
+                    <CheckCircle2 className="w-6 h-6 text-blue-400 flex-shrink-0 mt-1" />
+                    <div>
+                      <strong className="text-lg block mb-1">Kiến thức hệ thống & mạng</strong>
+                      <span className="text-slate-400">Hiểu cách máy tính, server và mạng hoạt động.</span>
+                    </div>
+                  </li>
+                  <li className="flex gap-4">
+                    <CheckCircle2 className="w-6 h-6 text-blue-400 flex-shrink-0 mt-1" />
+                    <div>
+                      <strong className="text-lg block mb-1">Quản lý dịch vụ CNTT (ITSM)</strong>
+                      <span className="text-slate-400">Biết cách vận hành và hỗ trợ hệ thống cho doanh nghiệp.</span>
+                    </div>
+                  </li>
+                  <li className="flex gap-4">
+                    <CheckCircle2 className="w-6 h-6 text-blue-400 flex-shrink-0 mt-1" />
+                    <div>
+                      <strong className="text-lg block mb-1">An toàn thông tin cơ bản</strong>
+                      <span className="text-slate-400">Bảo vệ dữ liệu, phát hiện rủi ro.</span>
+                    </div>
+                  </li>
+                  <li className="flex gap-4">
+                    <CheckCircle2 className="w-6 h-6 text-blue-400 flex-shrink-0 mt-1" />
+                    <div>
+                      <strong className="text-lg block mb-1">Điện toán đám mây</strong>
+                      <span className="text-slate-400">Làm việc với các nền tảng lưu trữ và vận hành online.</span>
+                    </div>
+                  </li>
+                  <li className="flex gap-4">
+                    <CheckCircle2 className="w-6 h-6 text-blue-400 flex-shrink-0 mt-1" />
+                    <div>
+                      <strong className="text-lg block mb-1">Xử lý sự cố kỹ thuật</strong>
+                      <span className="text-slate-400">Nhanh chóng tìm nguyên nhân và khắc phục lỗi.</span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Kỹ năng mềm */}
+            <div className="bg-blue-50 rounded-[3rem] p-10 md:p-12 shadow-xl border border-blue-100 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 opacity-50" />
+              
+              <div className="relative z-10">
+                <div className="flex items-center gap-4 mb-10">
+                  <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-blue-600 shadow-sm">
+                    <HeartHandshake className="w-8 h-8" />
+                  </div>
+                  <h3 className="text-3xl font-bold text-slate-900">Kỹ năng mềm</h3>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                    <strong className="text-lg text-slate-900 block mb-2">Giao tiếp</strong>
+                    <p className="text-slate-600">Rõ ràng, dễ hiểu khi giải thích kỹ thuật cho người dùng.</p>
+                  </div>
+                  <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                    <strong className="text-lg text-slate-900 block mb-2">Giải quyết vấn đề</strong>
+                    <p className="text-slate-600">Tư duy logic để tìm ra giải pháp tối ưu.</p>
+                  </div>
+                  <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                    <strong className="text-lg text-slate-900 block mb-2">Làm việc nhóm</strong>
+                    <p className="text-slate-600">Phối hợp hiệu quả với các bộ phận khác.</p>
+                  </div>
+                  <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                    <strong className="text-lg text-slate-900 block mb-2">Quản lý thời gian</strong>
+                    <p className="text-slate-600">Sắp xếp ưu tiên xử lý các sự cố hợp lý.</p>
+                  </div>
+                  <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 sm:col-span-2">
+                    <strong className="text-lg text-slate-900 block mb-2">Tinh thần phục vụ & Tự học</strong>
+                    <p className="text-slate-600">Luôn sẵn sàng hỗ trợ khách hàng và liên tục cập nhật kiến thức vì công nghệ luôn thay đổi.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
