@@ -23,8 +23,8 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center gap-2">
-            <img src="/logo.png" alt="ServIT Logo" className="h-8 w-8 object-cover rounded-md" />
-            <span className="text-white font-bold text-xl tracking-tight">ServIT</span>
+            <img src="/logo.png" alt="TechServ Logo" className="h-8 w-8 object-cover rounded-md" />
+            <span className="text-white font-bold text-xl tracking-tight">TechServ</span>
           </Link>
           
           <div className="hidden md:block">

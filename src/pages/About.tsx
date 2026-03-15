@@ -28,7 +28,7 @@ const About = () => {
               Sứ mệnh kết nối <span className="text-blue-600">tài năng trẻ</span> với thế giới công nghệ
             </h1>
             <p className="text-xl text-slate-600 mb-8 leading-relaxed">
-              ServIT không chỉ là một nền tảng thông tin, chúng tôi là người đồng hành tin cậy trên hành trình định hướng và phát triển sự nghiệp trong ngành IT Services tại Việt Nam.
+              TechServ không chỉ là một nền tảng thông tin, chúng tôi là người đồng hành tin cậy trên hành trình định hướng và phát triển sự nghiệp trong ngành IT Services tại Việt Nam.
             </p>
             <div className="grid grid-cols-2 gap-8">
               <div>
@@ -90,7 +90,7 @@ const About = () => {
         <div className="mb-32">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-slate-900 mb-6">Giá trị cốt lõi</h2>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto">Những nguyên tắc vàng định hình nên văn hóa và mọi hoạt động của ServIT.</p>
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto">Những nguyên tắc vàng định hình nên văn hóa và mọi hoạt động của TechServ.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[

@@ -137,7 +137,7 @@ const FAQ = () => {
           <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10">
             <div className="max-w-md">
               <h2 className="text-3xl font-bold mb-4">Bạn vẫn còn thắc mắc?</h2>
-              <p className="text-slate-400 text-lg">Đừng ngần ngại liên hệ trực tiếp với đội ngũ chuyên gia của ServIT để được tư vấn 1-1 miễn phí.</p>
+              <p className="text-slate-400 text-lg">Đừng ngần ngại liên hệ trực tiếp với đội ngũ chuyên gia của TechServ để được tư vấn 1-1 miễn phí.</p>
             </div>
             <div className="flex flex-col gap-4 w-full md:w-auto">
               <a href="mailto:techserv26@gmail.com" className="flex items-center gap-4 p-4 bg-white/5 hover:bg-white/10 rounded-2xl border border-white/10 transition-all">
