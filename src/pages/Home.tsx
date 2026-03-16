@@ -66,7 +66,7 @@ const Hero = () => {
                 Về chúng tôi
               </div>
               <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold max-w-4xl leading-[1.1] mb-6 tracking-tight">
-                ServIT: Nền tảng định hướng tương lai trong ngành Dịch vụ Công nghệ.
+                TechServ: Nền tảng định hướng tương lai trong ngành Dịch vụ Công nghệ.
               </h2>
               <p className="text-lg md:text-xl text-slate-300 max-w-2xl leading-relaxed mb-4">
                 Chúng tôi cung cấp cái nhìn toàn diện, lộ trình học tập và công cụ đánh giá giúp các bạn học sinh, sinh viên tự tin bước chân vào lĩnh vực IT Services đầy tiềm năng.
@@ -604,7 +604,7 @@ const Home = () => {
       {/* More sections can be added here */}
       <section className="py-20 text-center bg-white">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8">Khám phá thêm về ServIT</h2>
+          <h2 className="text-3xl font-bold mb-8">Khám phá thêm về TechServ</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             <a href="/careers" className="p-6 bg-slate-50 rounded-2xl border border-slate-200 hover:border-blue-500 transition-all">
               <MonitorSmartphone className="h-8 w-8 text-blue-600 mx-auto mb-4" />
