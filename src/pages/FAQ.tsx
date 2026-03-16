@@ -12,9 +12,6 @@ import {
 } from 'lucide-react';
 
 const FAQ = () => {
-  const [activeIndex, setActiveIndex] = useState<number | null>(0);
-  const [searchTerm, setSearchTerm] = useState('');
-
   const faqs = [
     {
       q: "Ngành IT Services có yêu cầu bằng Đại học không?",
@@ -48,6 +45,9 @@ const FAQ = () => {
     }
   ];
 
+  const [activeQuestion, setActiveQuestion] = useState<string | null>(faqs[0].q);
+  const [searchTerm, setSearchTerm] = useState('');
+
   const filteredFaqs = faqs.filter(faq => 
     faq.q.toLowerCase().includes(searchTerm.toLowerCase()) || 
     faq.a.toLowerCase().includes(searchTerm.toLowerCase())
@@ -60,9 +60,22 @@ const FAQ = () => {
           <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 tracking-tight">
             Giải đáp <span className="text-blue-600">Thắc mắc</span>
           </h1>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+          <p className="text-xl text-slate-600 max-w-2xl mx-auto mb-12">
             Mọi câu hỏi bạn cần về ngành IT Services đều có ở đây. Nếu không tìm thấy, hãy liên hệ trực tiếp với chúng tôi.
           </p>
+
+          {/* Video Tổng quan */}
+          <div className="w-full aspect-video rounded-3xl overflow-hidden shadow-2xl border border-slate-100 mb-16">
+            <iframe 
+              width="100%" 
+              height="100%" 
+              src="https://www.youtube.com/embed/DEuKFEOSxzM" 
+              title="Tổng quan ngành IT Services" 
+              frameBorder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              allowFullScreen
+            ></iframe>
+          </div>
         </div>
 
         {/* Search Bar */}
@@ -80,27 +93,27 @@ const FAQ = () => {
         <div className="space-y-4 mb-20">
           {filteredFaqs.map((faq, index) => (
             <motion.div 
-              key={index}
+              key={faq.q}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.05 }}
               className="border border-slate-100 rounded-[2rem] overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow"
             >
               <button
-                onClick={() => setActiveIndex(activeIndex === index ? null : index)}
+                onClick={() => setActiveQuestion(activeQuestion === faq.q ? null : faq.q)}
                 className="w-full flex items-center justify-between p-8 text-left group"
               >
                 <div className="flex items-center gap-4">
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${activeIndex === index ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-500 group-hover:bg-blue-50'}`}>
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${activeQuestion === faq.q ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-500 group-hover:bg-blue-50'}`}>
                     <HelpCircle className="h-5 w-5" />
                   </div>
                   <span className="text-lg md:text-xl font-bold text-slate-900">{faq.q}</span>
                 </div>
-                <ChevronDown className={`h-6 w-6 text-slate-400 transition-transform duration-300 ${activeIndex === index ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`h-6 w-6 text-slate-400 transition-transform duration-300 ${activeQuestion === faq.q ? 'rotate-180' : ''}`} />
               </button>
               
               <AnimatePresence>
-                {activeIndex === index && (
+                {activeQuestion === faq.q && (
                   <motion.div
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}
@@ -137,7 +150,7 @@ const FAQ = () => {
           <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10">
             <div className="max-w-md">
               <h2 className="text-3xl font-bold mb-4">Bạn vẫn còn thắc mắc?</h2>
-              <p className="text-slate-400 text-lg">Đừng ngần ngại liên hệ trực tiếp với đội ngũ chuyên gia của TechServ để được tư vấn 1-1 miễn phí.</p>
+              <p className="text-slate-400 text-lg">Đừng ngần ngại liên hệ trực tiếp với đội ngũ chuyên gia của ServIT để được tư vấn 1-1 miễn phí.</p>
             </div>
             <div className="flex flex-col gap-4 w-full md:w-auto">
               <a href="mailto:techserv26@gmail.com" className="flex items-center gap-4 p-4 bg-white/5 hover:bg-white/10 rounded-2xl border border-white/10 transition-all">
