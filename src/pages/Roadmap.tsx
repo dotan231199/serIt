@@ -12,8 +12,152 @@ import {
   BookOpen,
   Layers,
   Clock,
-  Lightbulb
+  Lightbulb,
+  GraduationCap,
+  Building2,
+  ExternalLink
 } from 'lucide-react';
+
+const UniversityReference = () => {
+  return (
+    <div className="mt-32 mb-20">
+      <div className="text-center mb-16">
+        <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight">
+          4. KHỐI NGÀNH & <span className="text-blue-600">TRƯỜNG ĐẠI HỌC THAM KHẢO</span>
+        </h2>
+        <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+          Lựa chọn môi trường đào tạo phù hợp để bắt đầu hành trình sự nghiệp IT của bạn.
+        </p>
+      </div>
+
+      <div className="bg-white rounded-[3rem] p-8 md:p-12 shadow-xl border border-slate-100 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-50 rounded-full mix-blend-multiply filter blur-3xl opacity-50 -translate-y-1/2 translate-x-1/3"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-emerald-50 rounded-full mix-blend-multiply filter blur-3xl opacity-50 translate-y-1/2 -translate-x-1/3"></div>
+        
+        <div className="relative z-10">
+          {/* Khối ngành */}
+          <div className="mb-16">
+            <div className="flex items-center gap-4 mb-8">
+              <div className="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600">
+                <BookOpen className="w-7 h-7" />
+              </div>
+              <h3 className="text-2xl font-bold text-slate-900">Các khối ngành xét tuyển</h3>
+            </div>
+            
+            <div className="flex flex-wrap gap-4">
+              {['A00', 'A01', 'D01', 'D07', 'D90'].map((khoi) => (
+                <div key={khoi} className="px-8 py-4 bg-slate-50 border border-slate-200 rounded-2xl text-xl font-bold text-slate-800 shadow-sm hover:border-blue-400 hover:bg-blue-50 hover:text-blue-700 transition-all cursor-default">
+                  Khối {khoi}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Trường đại học */}
+          <div>
+            <div className="flex items-center gap-4 mb-8">
+              <div className="w-14 h-14 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-600">
+                <Building2 className="w-7 h-7" />
+              </div>
+              <h3 className="text-2xl font-bold text-slate-900">Các trường đại học tiêu biểu (Trong nước)</h3>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {/* Nhóm 1 */}
+              <div className="bg-slate-50 rounded-[2rem] p-8 border border-slate-200 hover:shadow-lg transition-shadow">
+                <div className="inline-block px-4 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold tracking-widest uppercase mb-6">
+                  Định hướng học thuật & Chuyên sâu
+                </div>
+                <p className="text-slate-600 mb-6 font-medium">
+                  Phù hợp với: <span className="text-slate-900 font-bold">IT Service, Quản trị hệ thống, Triển khai – Vận hành CNTT</span>
+                </p>
+                
+                <ul className="space-y-4">
+                  <li>
+                    <a href="https://hust.edu.vn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between p-4 bg-white rounded-xl border border-slate-100 hover:border-blue-300 hover:shadow-md transition-all">
+                      <div className="flex items-center gap-3">
+                        <GraduationCap className="w-5 h-5 text-blue-500" />
+                        <span className="font-bold text-slate-800 group-hover:text-blue-600 transition-colors">Đại học Bách khoa Hà Nội</span>
+                      </div>
+                      <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-blue-500" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://uet.vnu.edu.vn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between p-4 bg-white rounded-xl border border-slate-100 hover:border-blue-300 hover:shadow-md transition-all">
+                      <div className="flex items-center gap-3">
+                        <GraduationCap className="w-5 h-5 text-blue-500" />
+                        <span className="font-bold text-slate-800 group-hover:text-blue-600 transition-colors">Đại học Công nghệ – ĐHQG Hà Nội (UET)</span>
+                      </div>
+                      <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-blue-500" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.uit.edu.vn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between p-4 bg-white rounded-xl border border-slate-100 hover:border-blue-300 hover:shadow-md transition-all">
+                      <div className="flex items-center gap-3">
+                        <GraduationCap className="w-5 h-5 text-blue-500" />
+                        <span className="font-bold text-slate-800 group-hover:text-blue-600 transition-colors">Đại học Công nghệ Thông tin – ĐHQG TP.HCM (UIT)</span>
+                      </div>
+                      <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-blue-500" />
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Nhóm 2 */}
+              <div className="bg-slate-50 rounded-[2rem] p-8 border border-slate-200 hover:shadow-lg transition-shadow">
+                <div className="inline-block px-4 py-1 bg-emerald-100 text-emerald-700 rounded-full text-xs font-bold tracking-widest uppercase mb-6">
+                  Định hướng ứng dụng & Doanh nghiệp
+                </div>
+                <p className="text-slate-600 mb-6 font-medium">
+                  Phù hợp với: <span className="text-slate-900 font-bold">IT Support, Dịch vụ CNTT doanh nghiệp</span>
+                </p>
+                
+                <ul className="space-y-4">
+                  <li>
+                    <a href="https://daihoc.fpt.edu.vn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between p-4 bg-white rounded-xl border border-slate-100 hover:border-emerald-300 hover:shadow-md transition-all">
+                      <div className="flex items-center gap-3">
+                        <GraduationCap className="w-5 h-5 text-emerald-500" />
+                        <span className="font-bold text-slate-800 group-hover:text-emerald-600 transition-colors">Đại học FPT</span>
+                      </div>
+                      <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-emerald-500" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.hutech.edu.vn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between p-4 bg-white rounded-xl border border-slate-100 hover:border-emerald-300 hover:shadow-md transition-all">
+                      <div className="flex items-center gap-3">
+                        <GraduationCap className="w-5 h-5 text-emerald-500" />
+                        <span className="font-bold text-slate-800 group-hover:text-emerald-600 transition-colors">Đại học Công nghệ TP.HCM (HUTECH)</span>
+                      </div>
+                      <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-emerald-500" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://hoasen.edu.vn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between p-4 bg-white rounded-xl border border-slate-100 hover:border-emerald-300 hover:shadow-md transition-all">
+                      <div className="flex items-center gap-3">
+                        <GraduationCap className="w-5 h-5 text-emerald-500" />
+                        <span className="font-bold text-slate-800 group-hover:text-emerald-600 transition-colors">Đại học Hoa Sen</span>
+                      </div>
+                      <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-emerald-500" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://ntt.edu.vn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between p-4 bg-white rounded-xl border border-slate-100 hover:border-emerald-300 hover:shadow-md transition-all">
+                      <div className="flex items-center gap-3">
+                        <GraduationCap className="w-5 h-5 text-emerald-500" />
+                        <span className="font-bold text-slate-800 group-hover:text-emerald-600 transition-colors">Đại học Nguyễn Tất Thành</span>
+                      </div>
+                      <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-emerald-500" />
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const Roadmap = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -130,7 +274,7 @@ const Roadmap = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-16 text-center">
           <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 tracking-tight">
-            Lộ trình <span className="text-blue-600">Phát triển Sự nghiệp</span>
+            1. Lộ trình <span className="text-blue-600">Phát triển Sự nghiệp</span>
           </h1>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto">
             Từ những bước chân đầu tiên đến khi trở thành một chuyên gia hàng đầu trong lĩnh vực IT Services.
@@ -455,6 +599,8 @@ const Roadmap = () => {
             </div>
           </div>
         </div>
+
+        <UniversityReference />
       </div>
     </div>
   );
