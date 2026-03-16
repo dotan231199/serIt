@@ -28,6 +28,8 @@ import {
   ResponsiveContainer 
 } from 'recharts';
 
+import { Link } from 'react-router-dom';
+
 // Re-using components from the original App.tsx
 // Note: In a real app, these would be in their own files in src/components/
 
@@ -193,18 +195,20 @@ const Home = () => {
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-8">Khám phá thêm về TechServ</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            <a href="/careers" className="p-6 bg-slate-50 rounded-2xl border border-slate-200 hover:border-blue-500 transition-all">
+           <Link to="/careers" className="p-6 bg-slate-50 rounded-2xl border border-slate-200 hover:border-blue-500 transition-all block text-center">
               <MonitorSmartphone className="h-8 w-8 text-blue-600 mx-auto mb-4" />
               <h3 className="font-bold">Ngành nghề</h3>
-            </a>
-            <a href="/roadmap" className="p-6 bg-slate-50 rounded-2xl border border-slate-200 hover:border-blue-500 transition-all">
+            </Link>
+            
+            <Link to="/roadmap" className="p-6 bg-slate-50 rounded-2xl border border-slate-200 hover:border-blue-500 transition-all block text-center">
               <TrendingUp className="h-8 w-8 text-blue-600 mx-auto mb-4" />
               <h3 className="font-bold">Lộ trình</h3>
-            </a>
-            <a href="/quiz" className="p-6 bg-slate-50 rounded-2xl border border-slate-200 hover:border-blue-500 transition-all">
+            </Link>
+            
+            <Link to="/quiz" className="p-6 bg-slate-50 rounded-2xl border border-slate-200 hover:border-blue-500 transition-all block text-center">
               <Zap className="h-8 w-8 text-blue-600 mx-auto mb-4" />
               <h3 className="font-bold">Trắc nghiệm</h3>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
