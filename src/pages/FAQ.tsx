@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   ChevronDown, 
+  ChevronLeft,
+  ChevronRight,
   MessageCircleQuestion, 
   Search,
   HelpCircle,
@@ -45,6 +47,12 @@ const FAQ = () => {
     }
   ];
 
+  const videos = [
+    { id: "DEuKFEOSxzM", title: "Tổng quan ngành IT Services" },
+    { id: "H4aXLoOOXkY", title: "IT Helpdesk vs IT Support" }
+  ];
+
+  const [activeVideoIndex, setActiveVideoIndex] = useState(0);
   const [activeQuestion, setActiveQuestion] = useState<string | null>(faqs[0].q);
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -64,17 +72,58 @@ const FAQ = () => {
             Mọi câu hỏi bạn cần về ngành IT Services đều có ở đây. Nếu không tìm thấy, hãy liên hệ trực tiếp với chúng tôi.
           </p>
 
-          {/* Video Tổng quan */}
-          <div className="w-full aspect-video rounded-3xl overflow-hidden shadow-2xl border border-slate-100 mb-16">
-            <iframe 
-              width="100%" 
-              height="100%" 
-              src="https://www.youtube.com/embed/DEuKFEOSxzM" 
-              title="Tổng quan ngành IT Services" 
-              frameBorder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-              allowFullScreen
-            ></iframe>
+          {/* Video Slideshow */}
+          <div className="mb-20 relative group max-w-4xl mx-auto">
+            <div className="w-full aspect-video rounded-3xl overflow-hidden shadow-2xl border border-slate-100 relative bg-slate-900">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeVideoIndex}
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -50 }}
+                  transition={{ duration: 0.3 }}
+                  className="w-full h-full absolute inset-0"
+                >
+                  <iframe 
+                    width="100%" 
+                    height="100%" 
+                    src={`https://www.youtube.com/embed/${videos[activeVideoIndex].id}`} 
+                    title={videos[activeVideoIndex].title} 
+                    frameBorder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowFullScreen
+                  ></iframe>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+            
+            {/* Navigation Buttons */}
+            <button 
+              onClick={() => setActiveVideoIndex((prev) => (prev === 0 ? videos.length - 1 : prev - 1))}
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/80 backdrop-blur-sm text-slate-800 rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-all hover:bg-white hover:scale-110 z-10"
+              aria-label="Previous video"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            <button 
+              onClick={() => setActiveVideoIndex((prev) => (prev === videos.length - 1 ? 0 : prev + 1))}
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/80 backdrop-blur-sm text-slate-800 rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-all hover:bg-white hover:scale-110 z-10"
+              aria-label="Next video"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+
+            {/* Dots */}
+            <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
+              {videos.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActiveVideoIndex(idx)}
+                  className={`h-2.5 rounded-full transition-all duration-300 ${activeVideoIndex === idx ? 'w-8 bg-blue-600' : 'w-2.5 bg-slate-300 hover:bg-slate-400'}`}
+                  aria-label={`Go to video ${idx + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
 

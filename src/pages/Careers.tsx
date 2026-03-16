@@ -11,8 +11,351 @@ import {
   Briefcase,
   Users,
   Award,
-  Cpu
+  Cpu,
+  GraduationCap,
+  Zap
 } from 'lucide-react';
+import { 
+  AreaChart, 
+  Area, 
+  XAxis, 
+  YAxis, 
+  CartesianGrid, 
+  Tooltip, 
+  ResponsiveContainer,
+  LineChart,
+  Line,
+  Legend
+} from 'recharts';
+
+const IndustryOverview = () => {
+  const salaryData = [
+    { name: "Mới ra trường", salary: 10.5 },
+    { name: "1-2 năm", salary: 17 },
+    { name: "3-4 năm", salary: 27 },
+    { name: "5-8 năm", salary: 40 },
+    { name: "Chuyên gia", salary: 65 },
+  ];
+
+  const characteristics = [
+    {
+      title: "Tiếp xúc trực tiếp với người dùng",
+      desc: "Luôn giao tiếp, hướng dẫn và hỗ trợ khách hàng hoặc nhân viên khi họ gặp vấn đề về thiết bị, phần mềm hay tài khoản.",
+      icon: <Users className="h-6 w-6 text-blue-500" />,
+      bg: "bg-blue-50"
+    },
+    {
+      title: "Xử lý và khắc phục sự cố thường xuyên",
+      desc: "Công việc liên tục liên quan đến sửa lỗi, cài đặt lại hệ thống, bảo trì thiết bị, đảm bảo mọi thứ hoạt động bình thường.",
+      icon: <CheckCircle2 className="h-6 w-6 text-emerald-500" />,
+      bg: "bg-emerald-50"
+    },
+    {
+      title: "Yêu cầu kỹ năng kỹ thuật vững",
+      desc: "Cần nắm chắc kiến thức về phần cứng, phần mềm, mạng cơ bản, bảo mật… để giải quyết vấn đề nhanh và chính xác.",
+      icon: <MonitorSmartphone className="h-6 w-6 text-purple-500" />,
+      bg: "bg-purple-50"
+    },
+    {
+      title: "Cường độ công việc linh hoạt, đột xuất",
+      desc: "Phải sẵn sàng phản ứng khi có sự cố bất ngờ xảy ra, có thể làm ngoài giờ trong trường hợp khẩn cấp.",
+      icon: <TrendingUp className="h-6 w-6 text-orange-500" />,
+      bg: "bg-orange-50"
+    },
+    {
+      title: "Luôn phải cập nhật công nghệ mới",
+      desc: "Công nghệ thay đổi liên tục, vì thế người làm nghề cần học hỏi không ngừng để đáp ứng yêu cầu thực tế và hỗ trợ hiệu quả.",
+      icon: <GraduationCap className="h-6 w-6 text-rose-500" />,
+      bg: "bg-rose-50"
+    }
+  ];
+
+  return (
+    <section id="overview" className="py-24 bg-slate-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mb-32">
+          <div className="text-center mb-16">
+            <div className="inline-block px-4 py-1 bg-white text-slate-500 rounded-full text-[10px] font-bold tracking-widest uppercase mb-4 shadow-sm border border-slate-100">
+              Phân tích ngành
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight">Đặc Điểm Ngành Nghề</h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            {characteristics.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100 flex flex-col items-center text-center group transition-all hover:shadow-xl"
+              >
+                <div className={`w-16 h-16 ${item.bg} rounded-2xl flex items-center justify-center mb-6`}>
+                  {item.icon}
+                </div>
+                <h4 className="font-bold text-slate-900 text-lg mb-3">{item.title}</h4>
+                <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mb-24">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+            <div className="lg:col-span-1">
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6 tracking-tight">Mức Lương & Thu Nhập</h2>
+              <p className="text-slate-600 mb-8 text-lg leading-relaxed">
+                Biểu đồ thể hiện sự tăng trưởng thu nhập mạnh mẽ theo số năm kinh nghiệm.
+              </p>
+            </div>
+
+            <div className="lg:col-span-2 bg-white p-8 md:p-12 rounded-[3rem] shadow-xl border border-slate-100 h-[400px]">
+              <ResponsiveContainer width="100%" height="100%">
+                <AreaChart data={salaryData}>
+                  <defs>
+                    <linearGradient id="colorSalary" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.3}/>
+                      <stop offset="95%" stopColor="#3b82f6" stopOpacity={0}/>
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
+                  <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#64748b', fontSize: 12 }} />
+                  <YAxis axisLine={false} tickLine={false} tick={{ fill: '#64748b', fontSize: 12 }} tickFormatter={(value) => `${value}tr`} />
+                  <Tooltip />
+                  <Area type="monotone" dataKey="salary" stroke="#3b82f6" strokeWidth={4} fillOpacity={1} fill="url(#colorSalary)" />
+                </AreaChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const DetailedSalaryAndOpportunities = () => {
+  const detailedSalaryData = [
+    {
+      name: "Mới vào nghề",
+      itSupport: 9.5, itSupportText: "7 - 12 triệu",
+      sysAdmin: 12.5, sysAdminText: "10 - 15 triệu",
+      cloud: 27.5, cloudText: "20 - 35 triệu (Junior)",
+      consultant: null, consultantText: ""
+    },
+    {
+      name: "1-4 năm",
+      itSupport: 11.5, itSupportText: "11 - 12 triệu",
+      sysAdmin: 27.5, sysAdminText: "20 - 35 triệu",
+      cloud: null, cloudText: "",
+      consultant: 27.5, consultantText: "20 - 35 triệu"
+    },
+    {
+      name: "5-9 năm / Senior",
+      itSupport: 17, itSupportText: "Khoảng 17 triệu",
+      sysAdmin: 50, sysAdminText: "40 - 60 triệu",
+      cloud: 75, cloudText: "50 - 100+ triệu",
+      consultant: 60, consultantText: "40 - 80 triệu"
+    },
+    {
+      name: "Chuyên gia / Quốc tế",
+      itSupport: 40, itSupportText: "Lên đến 40 triệu",
+      sysAdmin: null, sysAdminText: "",
+      cloud: null, cloudText: "",
+      consultant: 62.5, consultantText: "50 - 75 triệu (Quốc tế)"
+    }
+  ];
+
+  const CustomTooltip = ({ active, payload, label }: any) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="bg-white p-4 rounded-xl shadow-lg border border-slate-100">
+          <p className="font-bold text-slate-900 mb-2">{label}</p>
+          {payload.map((entry: any, index: number) => {
+            const textKey = `${entry.dataKey}Text`;
+            const textValue = entry.payload[textKey];
+            if (!textValue) return null;
+            return (
+              <div key={index} className="flex items-center gap-2 text-sm mb-1">
+                <div className="w-3 h-3 rounded-full" style={{ backgroundColor: entry.color }}></div>
+                <span className="text-slate-600">{entry.name}:</span>
+                <span className="font-semibold text-slate-900">{textValue}</span>
+              </div>
+            );
+          })}
+        </div>
+      );
+    }
+    return null;
+  };
+
+  return (
+    <section className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Mức lương chi tiết */}
+        <div className="mb-32">
+          <div className="text-center mb-16">
+            <div className="inline-block px-4 py-1 bg-blue-50 text-blue-600 rounded-full text-[10px] font-bold tracking-widest uppercase mb-4 shadow-sm border border-blue-100">
+              Chi tiết
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight">Mức lương theo từng vị trí</h2>
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+              Sự phân hóa thu nhập rõ rệt dựa trên chuyên môn và kinh nghiệm trong ngành dịch vụ IT.
+            </p>
+          </div>
+
+          <div className="bg-slate-50 p-6 md:p-10 rounded-[3rem] shadow-sm border border-slate-100 h-[500px] max-w-5xl mx-auto">
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart data={detailedSalaryData} margin={{ top: 20, right: 30, left: 20, bottom: 10 }}>
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
+                <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#64748b', fontSize: 13 }} dy={10} />
+                <YAxis axisLine={false} tickLine={false} tick={{ fill: '#64748b', fontSize: 13 }} tickFormatter={(value) => `${value}tr`} dx={-10} />
+                <Tooltip content={<CustomTooltip />} />
+                <Legend wrapperStyle={{ paddingTop: '20px' }} />
+                <Line type="monotone" dataKey="itSupport" name="IT Support" stroke="#3b82f6" strokeWidth={4} dot={{ r: 6, strokeWidth: 2 }} activeDot={{ r: 8 }} connectNulls />
+                <Line type="monotone" dataKey="sysAdmin" name="System / Network Admin" stroke="#10b981" strokeWidth={4} dot={{ r: 6, strokeWidth: 2 }} activeDot={{ r: 8 }} connectNulls />
+                <Line type="monotone" dataKey="consultant" name="IT Consultant" stroke="#8b5cf6" strokeWidth={4} dot={{ r: 6, strokeWidth: 2 }} activeDot={{ r: 8 }} connectNulls />
+                <Line type="monotone" dataKey="cloud" name="Cloud / Cybersecurity" stroke="#f59e0b" strokeWidth={4} dot={{ r: 6, strokeWidth: 2 }} activeDot={{ r: 8 }} connectNulls />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+
+        {/* Nhu cầu và cơ hội */}
+        <div className="mb-32">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <div className="inline-block px-4 py-1 bg-emerald-50 text-emerald-600 rounded-full text-[10px] font-bold tracking-widest uppercase mb-4 shadow-sm border border-emerald-100">
+                Xu hướng
+              </div>
+              <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight">Nhu cầu và cơ hội</h2>
+              <div className="prose prose-lg text-slate-600">
+                <p className="mb-6">
+                  Các nghiên cứu và bài báo cho thấy nhân lực trong lĩnh vực công nghệ và dịch vụ CNTT đang rất cần thiết trong xã hội hiện đại. 
+                </p>
+                <p>
+                  Sự phát triển mạnh mẽ của chuyển đổi số, Internet, dữ liệu và trí tuệ nhân tạo khiến các tổ chức ngày càng cần nhiều chuyên gia trong các mảng:
+                </p>
+                <ul className="mt-6 space-y-4">
+                  <li className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 flex-shrink-0"><CheckCircle2 className="w-5 h-5" /></div>
+                    <span className="font-medium text-slate-800">Hỗ trợ kỹ thuật</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 flex-shrink-0"><CheckCircle2 className="w-5 h-5" /></div>
+                    <span className="font-medium text-slate-800">Quản trị hệ thống</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 flex-shrink-0"><CheckCircle2 className="w-5 h-5" /></div>
+                    <span className="font-medium text-slate-800">An toàn thông tin</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 flex-shrink-0"><CheckCircle2 className="w-5 h-5" /></div>
+                    <span className="font-medium text-slate-800">Tư vấn và dịch vụ công nghệ</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-tr from-blue-100 to-emerald-50 rounded-[3rem] transform rotate-3 scale-105 -z-10"></div>
+              <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=1000&auto=format&fit=crop" alt="IT Opportunities" className="rounded-[3rem] shadow-xl object-cover h-[500px] w-full" referrerPolicy="no-referrer" />
+            </div>
+          </div>
+        </div>
+
+        {/* Lợi ích và Bất lợi */}
+        <div>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight">Đánh giá tổng quan</h2>
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+              So sánh chi tiết những mặt lợi ích và thách thức khi theo đuổi ngành dịch vụ IT.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {/* Lợi ích */}
+            <div className="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-xl shadow-emerald-900/5 border border-emerald-100 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 -translate-y-1/2 translate-x-1/2"></div>
+              <div className="flex items-center gap-4 mb-10 relative z-10">
+                <div className="w-14 h-14 rounded-2xl bg-emerald-100 flex items-center justify-center text-emerald-600">
+                  <TrendingUp className="w-8 h-8" />
+                </div>
+                <h3 className="text-3xl font-bold text-slate-900">Lợi ích</h3>
+              </div>
+              
+              <div className="space-y-8 relative z-10">
+                <div>
+                  <h4 className="text-xl font-bold text-emerald-700 mb-2 flex items-center gap-2">
+                    <CheckCircle2 className="w-5 h-5" /> Nhu cầu nhân lực cao
+                  </h4>
+                  <p className="text-slate-600 leading-relaxed">Sự phát triển mạnh mẽ của chuyển đổi số, Internet và dữ liệu số khiến các tổ chức ngày càng cần nhiều nhân lực công nghệ để vận hành và bảo vệ hệ thống. Vì vậy, cơ hội việc làm trong ngành này rất lớn.</p>
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold text-emerald-700 mb-2 flex items-center gap-2">
+                    <CheckCircle2 className="w-5 h-5" /> Mức thu nhập hấp dẫn
+                  </h4>
+                  <p className="text-slate-600 leading-relaxed">Ngành Công nghệ thông tin là một trong những ngành có mức lương cao và tăng nhanh theo kinh nghiệm. Những người có kỹ năng chuyên môn tốt có thể đạt mức thu nhập rất cao.</p>
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold text-emerald-700 mb-2 flex items-center gap-2">
+                    <CheckCircle2 className="w-5 h-5" /> Cơ hội phát triển rộng
+                  </h4>
+                  <p className="text-slate-600 leading-relaxed">Người làm trong lĩnh vực này có thể phát triển lên nhiều vị trí khác nhau như: quản trị hệ thống, chuyên gia an ninh mạng, chuyên gia tư vấn công nghệ, quản lý công nghệ thông tin.</p>
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold text-emerald-700 mb-2 flex items-center gap-2">
+                    <CheckCircle2 className="w-5 h-5" /> Môi trường hiện đại & Quốc tế
+                  </h4>
+                  <p className="text-slate-600 leading-relaxed">Thường làm việc trong môi trường công nghệ hiện đại. Vì công nghệ là lĩnh vực toàn cầu, nhân lực CNTT có thể làm việc cho các công ty quốc tế hoặc làm việc từ xa với nhiều cơ hội phát triển.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Bất lợi */}
+            <div className="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-xl shadow-rose-900/5 border border-rose-100 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-rose-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 -translate-y-1/2 translate-x-1/2"></div>
+              <div className="flex items-center gap-4 mb-10 relative z-10">
+                <div className="w-14 h-14 rounded-2xl bg-rose-100 flex items-center justify-center text-rose-600">
+                  <Zap className="w-8 h-8" />
+                </div>
+                <h3 className="text-3xl font-bold text-slate-900">Thách thức</h3>
+              </div>
+              
+              <div className="space-y-8 relative z-10">
+                <div>
+                  <h4 className="text-xl font-bold text-rose-700 mb-2 flex items-center gap-2">
+                    <ShieldCheck className="w-5 h-5" /> Áp lực công việc cao
+                  </h4>
+                  <p className="text-slate-600 leading-relaxed">Những người làm trong ngành công nghệ thường phải xử lý sự cố hệ thống, đảm bảo hệ thống hoạt động liên tục, nên công việc đôi khi khá căng thẳng.</p>
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold text-rose-700 mb-2 flex items-center gap-2">
+                    <ShieldCheck className="w-5 h-5" /> Cần học hỏi liên tục
+                  </h4>
+                  <p className="text-slate-600 leading-relaxed">Công nghệ thay đổi rất nhanh, vì vậy người làm trong ngành phải liên tục cập nhật kiến thức và kỹ năng mới.</p>
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold text-rose-700 mb-2 flex items-center gap-2">
+                    <ShieldCheck className="w-5 h-5" /> Thời gian không cố định
+                  </h4>
+                  <p className="text-slate-600 leading-relaxed">Trong một số trường hợp như sự cố hệ thống hoặc tấn công mạng, nhân viên CNTT có thể phải làm việc ngoài giờ hoặc trực hệ thống.</p>
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold text-rose-700 mb-2 flex items-center gap-2">
+                    <ShieldCheck className="w-5 h-5" /> Đòi hỏi kỹ năng chuyên môn cao
+                  </h4>
+                  <p className="text-slate-600 leading-relaxed">Để làm tốt công việc, người lao động cần có kiến thức chuyên sâu về công nghệ, hệ thống và bảo mật, điều này đòi hỏi thời gian học tập và rèn luyện lâu dài.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  );
+};
 
 const CareerDetail = ({ career, onClose }: { career: any, onClose: () => void }) => {
   if (!career) return null;
@@ -220,8 +563,11 @@ const Careers = () => {
   ];
 
   return (
-    <div className="pt-24 pb-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="bg-white">
+      <IndustryOverview />
+      <DetailedSalaryAndOpportunities />
+      
+      <div className="pt-24 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-16 text-center">
           <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 tracking-tight">
             Chi tiết các <span className="text-blue-600">Ngành nghề IT Services</span>
