@@ -106,10 +106,10 @@ const IndustryOverview = () => {
   const NodeCard = ({ item, index }: { item: any, index: number, key?: React.Key }) => (
     <motion.div
       onClick={() => setSelectedChar(item)}
-      initial={{ opacity: 0, scale: 0.9 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.1, type: "spring", stiffness: 100 }}
+      initial={{ opacity: 0, scale: 0.8, y: 30 }}
+      whileInView={{ opacity: 1, scale: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ delay: index * 0.1, duration: 0.4, ease: [0.21, 0.47, 0.32, 0.98] }}
       className={`block bg-slate-800/50 backdrop-blur-xl p-6 rounded-[2rem] shadow-xl border ${item.borderColor || 'border-white/10'} flex flex-col items-center text-center group transition-all duration-500 hover:-translate-y-3 hover:bg-slate-800/80 hover:shadow-2xl ${item.glowColor} relative z-10 h-full w-full max-w-[320px] mx-auto overflow-hidden cursor-pointer`}
     >
       {/* Subtle background gradient on hover */}
@@ -148,7 +148,13 @@ const IndustryOverview = () => {
           {/* Desktop Diagram Layout */}
           <div className="relative w-full max-w-6xl mx-auto hidden lg:block h-[1000px] mt-12">
             {/* SVG Lines */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none z-0">
+            <motion.svg 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1.5, delay: 0.6, ease: "easeInOut" }}
+              viewport={{ once: true }}
+              className="absolute inset-0 w-full h-full pointer-events-none z-0"
+            >
               <defs>
                 <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
                   <feGaussianBlur stdDeviation="4" result="blur" />
@@ -182,7 +188,7 @@ const IndustryOverview = () => {
               <line x1="50%" y1="50%" x2="75%" y2="85%" stroke="url(#grad3)" strokeWidth="3" strokeDasharray="6 6" className="animate-pulse" filter="url(#glow)" />
               <line x1="50%" y1="50%" x2="25%" y2="85%" stroke="url(#grad4)" strokeWidth="3" strokeDasharray="6 6" className="animate-pulse" filter="url(#glow)" />
               <line x1="50%" y1="50%" x2="17%" y2="39%" stroke="url(#grad5)" strokeWidth="3" strokeDasharray="6 6" className="animate-pulse" filter="url(#glow)" />
-            </svg>
+            </motion.svg>
 
             {/* Top */}
             <div className="absolute top-[10%] left-[50%] -translate-x-1/2 -translate-y-1/2 z-10 w-full max-w-[320px]">
@@ -210,7 +216,13 @@ const IndustryOverview = () => {
             </div>
 
             {/* Center Node */}
-            <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 z-20 flex items-center justify-center">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.5 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] }}
+              viewport={{ once: true }}
+              className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 z-20 flex items-center justify-center"
+            >
               {/* Pulsing rings */}
               <div className="absolute w-72 h-72 bg-blue-500/20 rounded-full animate-ping" style={{ animationDuration: '3s' }}></div>
               <div className="absolute w-64 h-64 bg-emerald-500/20 rounded-full animate-ping" style={{ animationDuration: '3s', animationDelay: '1s' }}></div>
@@ -219,7 +231,7 @@ const IndustryOverview = () => {
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-20 group-hover:opacity-40 transition-opacity"></div>
                 <span className="relative z-10 drop-shadow-lg">ĐẶC ĐIỂM CỦA NGÀNH<br/>IT SERVICES</span>
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* Mobile Layout */}
